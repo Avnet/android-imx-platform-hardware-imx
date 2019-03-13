@@ -3245,7 +3245,7 @@ static int adev_open_output_stream(struct audio_hw_device *dev,
         pcm_config_dsd.rate = config->sample_rate / DSD_RATE_TO_PCM_RATE;
         out->config[pcm_type] = pcm_config_dsd;
         out->stream.flush = out_flush;
-    } else if (flags & AUDIO_OUTPUT_FLAG_DIRECT &&
+    } else if (flags & (AUDIO_OUTPUT_FLAG_DIRECT|AUDIO_OUTPUT_FLAG_PRIMARY) &&
                devices == AUDIO_DEVICE_OUT_AUX_DIGITAL) {
         ALOGW("adev_open_output_stream() HDMI multichannel");
         if (ladev->active_output[OUTPUT_HDMI] != NULL) {
